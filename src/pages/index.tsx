@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { CreateTodo } from "~/components/CreateTodo";
 
 function Home() {
   const { data: sessionData, status } = useSession();
@@ -29,7 +30,9 @@ function Home() {
                   Sign Out
                 </button>
               </div>
-              <div>Todo components coming soon...</div>
+              <div>
+                <CreateTodo />
+              </div>
             </>
           )}
           {status !== "loading" && !sessionData && (
@@ -49,14 +52,15 @@ function Home() {
                 </p>
               </div>
               <div className="">
-                <Image src="/images/main-img.png"
-                width={600}
-                height={600}
-                alt="main-img" />
+                <Image
+                  src="/images/main-img.png"
+                  width={600}
+                  height={600}
+                  alt="main-img"
+                />
               </div>
             </div>
           )}
-
         </main>
       </div>
     </>
