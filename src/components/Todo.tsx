@@ -52,7 +52,7 @@ export function Todo({ todo }: TodoProps) {
   });
 
   const { mutate: deleteMutation } = api.todo.delete.useMutation({
-    onMutate: async ({ deleteId }) => {
+    onMutate: async (deleteId) => {
       await trpc.todo.all.cancel();
       const previousTodos = trpc.todo.all.getData();
       trpc.todo.all.setData(undefined, (prev) => {
